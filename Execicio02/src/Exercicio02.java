@@ -71,7 +71,6 @@ public class Exercicio02 {
         return String.format("%02d/%02d/%04d", dia, mes, ano);
     }
     
-    // Método toString para representação em string
     @Override
     public String toString() {
         return getDataFormatada();
