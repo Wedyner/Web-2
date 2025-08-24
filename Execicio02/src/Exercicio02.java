@@ -1,11 +1,9 @@
 public class Exercicio02 {
 
-    // Atributos privados para garantir o encapsulamento
     private int dia;
     private int mes;
     private int ano;
     
-    // Construtor que valida os valores iniciais
     public Exercicio02(int dia, int mes, int ano) {
         if (validarData(dia, mes, ano)) {
             this.dia = dia;
@@ -16,15 +14,13 @@ public class Exercicio02 {
         }
     }
     
-    // Método para validar a data
     private boolean validarData(int dia, int mes, int ano) {
         if (ano < 1900) return false;
         if (mes < 1 || mes > 12) return false;
-        if (dia < 1 || dia > 30) return false; // Considerando meses com 30 dias
+        if (dia < 1 || dia > 30) return false; 
         return true;
     }
     
-    // Getters
     public int getDia() {
         return dia;
     }
@@ -37,7 +33,6 @@ public class Exercicio02 {
         return ano;
     }
     
-    // Setters com validação
     public void setDia(int dia) {
         if (validarData(dia, this.mes, this.ano)) {
             this.dia = dia;
@@ -62,7 +57,6 @@ public class Exercicio02 {
         }
     }
     
-    // Método para modificar toda a data de uma vez
     public void setData(int dia, int mes, int ano) {
         if (validarData(dia, mes, ano)) {
             this.dia = dia;
@@ -73,7 +67,6 @@ public class Exercicio02 {
         }
     }
     
-    // Método para retornar a data formatada
     public String getDataFormatada() {
         return String.format("%02d/%02d/%04d", dia, mes, ano);
     }
