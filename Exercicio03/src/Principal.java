@@ -31,8 +31,7 @@ public class Principal {
         } while (opcao != 4);
     }
     
-    // Método para exibir o menu e retornar a opção escolhida
-    private static int exibirMenu() {
+      private static int exibirMenu() {
         String menu = """
             ===== GERENCIADOR DE TAREFAS =====
             1. Adicionar uma tarefa
@@ -46,37 +45,33 @@ public class Principal {
         try {
             String opcaoStr = JOptionPane.showInputDialog(menu);
             if (opcaoStr == null) {
-                return 4; // Se o usuário cancelar, sai do programa
+                return 4; 
             }
             return Integer.parseInt(opcaoStr);
         } catch (NumberFormatException e) {
-            return -1; // Opção inválida
+            return -1;
         }
     }
     
-    // Método para adicionar uma nova tarefa
     private static void adicionarTarefa() {
         try {
-            // Ler código da tarefa
+       
             String codigoStr = JOptionPane.showInputDialog("Digite o código da tarefa:");
-            if (codigoStr == null) return; // Usuário cancelou
+            if (codigoStr == null) return; 
             
             int codigo = Integer.parseInt(codigoStr);
             
-            // Verificar se o código já existe
             if (tarefaExiste(codigo)) {
                 JOptionPane.showMessageDialog(null, "Já existe uma tarefa com este código!");
                 return;
             }
             
-            // Ler título da tarefa
             String titulo = JOptionPane.showInputDialog("Digite o título da tarefa:");
             if (titulo == null || titulo.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Título não pode ser vazio!");
                 return;
             }
             
-            // Criar e adicionar a nova tarefa
             Exercicio03 novaTarefa = new Exercicio03(codigo, titulo.trim());
             tarefas.add(novaTarefa);
             
@@ -87,7 +82,6 @@ public class Principal {
         }
     }
     
-    // Método para remover uma tarefa
     private static void removerTarefa() {
         if (tarefas.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Não há tarefas para remover!");
@@ -95,16 +89,14 @@ public class Principal {
         }
         
         try {
-            // Mostrar tarefas existentes
+
             listarTarefas();
             
-            // Ler código da tarefa a ser removida
             String codigoStr = JOptionPane.showInputDialog("Digite o código da tarefa a ser removida:");
-            if (codigoStr == null) return; // Usuário cancelou
+            if (codigoStr == null) return; 
             
             int codigo = Integer.parseInt(codigoStr);
             
-            // Procurar e remover a tarefa
             boolean removido = false;
             for (int i = 0; i < tarefas.size(); i++) {
                 if (tarefas.get(i).getCodigo() == codigo) {
@@ -125,7 +117,6 @@ public class Principal {
         }
     }
     
-    // Método para listar todas as tarefas
     private static void listarTarefas() {
         if (tarefas.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Não há tarefas cadastradas!");
@@ -141,7 +132,6 @@ public class Principal {
         JOptionPane.showMessageDialog(null, lista.toString());
     }
     
-    // Método auxiliar para verificar se uma tarefa já existe
     private static boolean tarefaExiste(int codigo) {
         for (Exercicio03 tarefa : tarefas) {
             if (tarefa.getCodigo() == codigo) {
